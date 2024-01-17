@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "dgSpecHash": "aSPIuMdxjj2deI278BqEjVPAgLkTiI62ZdvGo4+40or5jgT42p40n5a7d5Dpl48X4s/3fiKXmPsPkBC/GHGNtg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\rujie\\OneDrive\\Desktop\\New folder\\Defense-Capstone-Copy\\RentHive\\RentHive.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\rujie\\.nuget\\packages\\jquery\\1.6.3\\jquery.1.6.3.nupkg.sha512",
+    "C:\\Users\\rujie\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\6.0.0\\microsoft.extensions.caching.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\rujie\\.nuget\\packages\\microsoft.extensions.caching.memory\\6.0.0\\microsoft.extensions.caching.memory.6.0.0.nupkg.sha512",
+    "C:\\Users\\rujie\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\rujie\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0\\microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\rujie\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
+    "C:\\Users\\rujie\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\rujie\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\rujie\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\rujie\\.nuget\\packages\\toastr\\2.1.1\\toastr.2.1.1.nupkg.sha512"
+  ],
+  "logs": []
+}

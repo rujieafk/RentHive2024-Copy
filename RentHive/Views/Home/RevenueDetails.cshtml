@@ -1,0 +1,149 @@
+﻿@model List<RentHive.Models.UserDataGetter>
+@{
+    ViewData["Title"] = "Banned Accounts";
+}
+<script>
+    $(document).ready(function () {
+        var notificationType = '@ViewBag.Noti_Type';
+        var notificationMessage = '@ViewBag.Noti_Message';
+
+        if (notificationType && notificationMessage) {
+            toastr[notificationType](notificationMessage);
+        }
+    });
+</script>
+<div class="home-index">
+    <div class="side-nav">
+        <div class="user">
+            <img src="~/images/logo2.png" class="user-img" />
+        </div>
+
+        <ul class="menu-list">
+            <li class="menu-item">
+                <img class="menu-icon" src="~/images/dashboard.png" /><a class="menu-text" onclick="location.href='@Url.Action("Index", "Home", new {Acc_id = ViewBag.Acc_Id})'">Home</a>
+            </li>
+            <li class="menu-item">
+                <img class="menu-icon" src="~/images/group.png" /><a class="menu-text" onclick="location.href='@Url.Action("HiveUserList", "SystemManagement", new {Acc_id = ViewBag.Acc_Id})'">User List</a>
+            </li>
+        </ul>
+
+        <ul class="menu-list">
+            <li class="menu-item"><img class="menu-icon" src="~/images/logout.png" /><a href="#popup" class="menu-text">Logout</a></li>
+        </ul>
+    </div>
+    <button class="close-button" onclick="location.href='@Url.Action("Index", "Home", new {Acc_id = ViewBag.Acc_id})'"><img class="close-icon" src="~/images/close.png"></button>
+</div>
+    <div class="hive-title-holder">
+        <h1>RentHive Income Details</h1>
+        <div>
+            <div style="background: rgba(250, 112, 31, 0.05); border: 1px  #FA701F solid; border-radius: 22px; padding: 10px">
+                <div>Total Revenue </div>
+                <div style="color: white; font-size: 40px; font-family: Poppins; font-weight: 700;">
+                @ViewBag.Total
+                </div>
+            </div>
+        </div>
+        <br />
+        <div style="display: flex; gap: 1rem; height: 100%;">
+            <div style="width: 40%; display: flex; flex-direction:column;">
+                    <div>
+                        <h4>Top Rented</h4>
+                        <div style="background: rgba(250, 112, 31, 0.05); border: 1px  #FA701F solid; border-radius: 22px; padding: 10px; height: 17vh;">
+                    @{
+                        int counter = 1;
+                        var items = new Dictionary<string, string> {
+                                { "Item", ViewBag.CountItem },
+                                { "Living Spaces", ViewBag.CountLivingSpaces },
+                                { "Storage Unit", ViewBag.CountStorage }
+                            };
+
+                            /*var sortedItems = items.OrderByDescending(x => int.TryParse(x.Value, out var intValue) ? intValue : 0);*/
+
+                            var sortedItems = items.OrderByDescending(x =>
+                            {
+                                if (int.TryParse(x.Value, out var intValue))
+                                {
+                                    return intValue;
+                                }
+                                else
+                                {
+                                    return 0;
+                                }
+                            });
+                        }
+
+                        <table>
+                            @foreach (var item in sortedItems)
+                            {
+                                <tr>
+                                    <td><h6>@counter. @item.Key</h6></td>
+                            </tr>
+                            counter++;
+                        }
+                        </table>
+
+
+                        </div>
+                    </div>
+                    <h4>Income</h4>
+                    <div style="background: rgba(250, 112, 31, 0.05); border: 1px  #FA701F solid; border-radius: 22px; padding: 10px; height: 17vh;">
+                        <table>
+                            <tr>
+                                <td>
+                                    <h6>Item : ₱ @ViewBag.SumItem</h6>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h6>Living Spaces : ₱ @ViewBag.SumLivingSpaces</h6>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h6>Storage Unit : ₱ @ViewBag.SumStorage</h6>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </>
+            </div>
+            <div style="width: 100%;">
+                <h4>Income Record</h4>
+                <div style="background: rgba(250, 112, 31, 0.05); border: 1px #FA701F solid; border-radius: 22px; padding: 10px; height: 50vh; overflow-y: scroll; ">
+                    <div class="table-content">
+                        <table>
+                            <tr>
+                                <th class="table_label">Category</th>
+                                <th class="table_label">Profit</th>
+                            </tr>
+                            @foreach (var income in Model)
+                            {
+                                <tr>
+                                    <td style="text-transform: capitalize;">@income.Income_Category</td>
+                                    <td>₱@income.Income_Total</td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>    
+        </div>
+    </div>
+<div id="popup" class="action-button">
+    <div class="border2">
+        <h1>Log Out?</h1>
+        <div class="message">
+            <h4 style="color: white">Are you sure you want to log out?</h4>
+        </div>
+        <form method="post" action="@Url.Action("Logout", "UserManagement")">
+            <button type="submit" class="btn btn-danger">Yes</button>
+            <a href="#" class="btn btn-primary">No</a>
+        </form>
+    </div>
+</div>
+<script>
+    window.onpopstate = function () {
+        location.reload(); // Refresh the page when the back button is clicked
+    };
+</script>
+
